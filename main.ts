@@ -3,7 +3,9 @@
 function gameInstructions () {
     game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
     game.showLongText("Each correct answer earns you points.", DialogLayout.Full)
-    game.showLongText("The game will end once you have three correct answers.", DialogLayout.Full)
+    game.showLongText("The game will end once you have answered all 5 questions.", DialogLayout.Full)
+    game.showLongText("You will then receive a score.", DialogLayout.Full)
+    game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
 // - this function contains all the lines of code needed to initiate the game
 // - this shortens the code under the onStart block
@@ -29,17 +31,36 @@ function onStart () {
 }
 function triviaCategory (num: number) {
     if (num == 0) {
-        text_list = ["a", "b", "c"]
+        historyQuestions = [
+        "Was the Declaration of Independence signed in 1876? ",
+        "",
+        "c",
+        "",
+        "",
+        ""
+        ]
+        historyAnswers = [
+        "0",
+        "1",
+        "1",
+        "0",
+        "1"
+        ]
         gameInstructions()
+        for (let index = 0; index < 5; index++) {
+            let list: number[] = []
+            list.push(game.askForNumber("", 1))
+        }
     } else if (num == 1) {
-        text_list = ["a", "b", "c"]
+        historyQuestions = ["a", "b", "c"]
         gameInstructions()
     } else {
-        text_list = ["a", "b", "c"]
+        historyQuestions = ["a", "b", "c"]
         gameInstructions()
     }
 }
-let text_list: string[] = []
+let historyAnswers: string[] = []
+let historyQuestions: string[] = []
 let category = 0
 onStart()
 // - this iteration happens throughout the game
