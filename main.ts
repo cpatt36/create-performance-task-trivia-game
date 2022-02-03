@@ -23,8 +23,8 @@ function onStart () {
 function triviaCategory (num: number) {
 	
 }
-// - this block occurs when the game starts
-// - the block calls a function called onStart which contains the code necessary to start the game
+// - this code in this block is run when the game starts
+// - the only code here calls the onStart function which contains the code necessary to start the game. 
 let category = 0
 onStart()
 // - this iteration happens throughout the game
