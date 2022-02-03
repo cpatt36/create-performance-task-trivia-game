@@ -1,9 +1,3 @@
-/**
- * - the only code here calls the onStart function which contains the code necessary to start the game.
- */
-/**
- * - this code in this block is run when the game starts
- */
 function gameInstructions () {
     game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
     game.showLongText("Each correct answer ears you points.", DialogLayout.Full)
@@ -33,14 +27,62 @@ function onStart () {
 }
 function triviaCategory (num: number) {
     if (num == 0) {
-        text_list = ["a", "b", "c"]
+        historyQuestions = [
+        "a",
+        "b",
+        "c",
+        "",
+        ""
+        ]
+        historyAnswers = [
+        "a",
+        "b",
+        "c",
+        "",
+        ""
+        ]
+        for (let index = 0; index < 5; index++) {
+            let list: number[] = []
+            list.push(game.askForNumber("", 1))
+        }
     } else if (num == 1) {
-        text_list = ["a", "b", "c"]
+        geographyQuestions = [
+        "a",
+        "b",
+        "c",
+        "",
+        ""
+        ]
+        geographyAnswers = [
+        "a",
+        "b",
+        "c",
+        "",
+        ""
+        ]
     } else {
-        text_list = ["a", "b", "c"]
+        moviesQuestions = [
+        "a",
+        "b",
+        "c",
+        "",
+        ""
+        ]
+        moviesAnswers = [
+        "a",
+        "b",
+        "c",
+        "",
+        ""
+        ]
     }
 }
-let text_list: string[] = []
+let moviesAnswers: string[] = []
+let moviesQuestions: string[] = []
+let geographyAnswers: string[] = []
+let geographyQuestions: string[] = []
+let historyAnswers: string[] = []
+let historyQuestions: string[] = []
 let category = 0
 onStart()
 // - this iteration happens throughout the game
