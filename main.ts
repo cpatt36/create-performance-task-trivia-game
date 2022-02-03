@@ -1,7 +1,12 @@
+// - The gameInstructions function decreases the complexity of the program. 
+// - Since each category will require the same instructions, rewriting the code each time would increase the lines of code. 
+// - This function also makes it simpler to alter the code if there are changes that need to made or if there is a bug. 
 function gameInstructions () {
     game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
-    game.showLongText("Each correct answer ears you points.", DialogLayout.Full)
-    game.showLongText("The game will end once you answer three correct answers.", DialogLayout.Full)
+    game.showLongText("Each correct answer earns you points.", DialogLayout.Full)
+    game.showLongText("The game will end once you answer all 5 questions related to the category.", DialogLayout.Full)
+    game.showLongText("You will then see a score.", DialogLayout.Full)
+    game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
 // - this function contains all the lines of code needed to initiate the game
 // - this shortens the code under the onStart block
