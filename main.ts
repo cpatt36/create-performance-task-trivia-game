@@ -33,18 +33,18 @@ function onStart () {
 function triviaCategory (num: number) {
     if (num == 0) {
         historyQuestions = [
-        "a",
-        "b",
-        "c",
-        "",
-        ""
+        "The First World War began on September 1st, 1914.",
+        "Submarines were used in the American Civil War.",
+        "California and Texas were once apart of Mexico.",
+        "The Declaration of Independence was signed in 1876.",
+        "The Great Chicago Fire was started when a cow knocked over a lantern"
         ]
         historyAnswers = [
-        "a",
-        "b",
-        "c",
-        "",
-        ""
+        "1",
+        "0",
+        "0",
+        "1",
+        "1"
         ]
         for (let index = 0; index < 5; index++) {
             let list: number[] = []
