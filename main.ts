@@ -1,3 +1,8 @@
+function gameInstructions () {
+    game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
+    game.showLongText("Each correct answer ears you points.", DialogLayout.Full)
+    game.showLongText("The game will end once you answer three correct answers.", DialogLayout.Full)
+}
 // - this function contains all the lines of code needed to initiate the game
 // - this shortens the code under the onStart block
 // - the long text blocks introduced the game, the game then asks for an input from the user
@@ -21,18 +26,25 @@ function onStart () {
     }
 }
 function triviaCategory (num: number) {
-	
+    if (num == 0) {
+        text_list = ["a", "b", "c"]
+    } else if (num == 1) {
+        text_list = ["a", "b", "c"]
+    } else {
+        text_list = ["a", "b", "c"]
+    }
 }
 // - this code in this block is run when the game starts
 // - the only code here calls the onStart function which contains the code necessary to start the game. 
+let text_list: string[] = []
 let category = 0
 onStart()
 // - this iteration happens throughout the game
-// - it constantly checks if the score of the user is 5
-// - once the user's score equals 5, the user wins and the game ends
+// - it constantly checks if the score of the user is 3
+// - once the user's score equals 3, the user wins and the game ends
 // - this iteration lessens the complexity by not having the program manually check the score after each progression of the game
 forever(function () {
-    if (info.score() >= 5) {
+    if (info.score() >= 3) {
         game.over(true, effects.confetti)
     }
 })
