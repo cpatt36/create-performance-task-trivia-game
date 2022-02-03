@@ -1,7 +1,9 @@
+// - This function decreases the complexity of the program. 
+// - Since each category will require the same instructions, this function allows for less code to be written and for it to be more easily altered in case of a change or error. 
 function gameInstructions () {
     game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
-    game.showLongText("Each correct answer ears you points.", DialogLayout.Full)
-    game.showLongText("The game will end once you answer three correct answers.", DialogLayout.Full)
+    game.showLongText("Each correct answer earns you points.", DialogLayout.Full)
+    game.showLongText("The game will end once you have three correct answers.", DialogLayout.Full)
 }
 // - this function contains all the lines of code needed to initiate the game
 // - this shortens the code under the onStart block
@@ -28,14 +30,15 @@ function onStart () {
 function triviaCategory (num: number) {
     if (num == 0) {
         text_list = ["a", "b", "c"]
+        gameInstructions()
     } else if (num == 1) {
         text_list = ["a", "b", "c"]
+        gameInstructions()
     } else {
         text_list = ["a", "b", "c"]
+        gameInstructions()
     }
 }
-// - this code in this block is run when the game starts
-// - the only code here calls the onStart function which contains the code necessary to start the game. 
 let text_list: string[] = []
 let category = 0
 onStart()
