@@ -1,6 +1,6 @@
-// - The gameInstructions function decreases the complexity of the program. 
-// - Since each category will require the same instructions, rewriting the code each time would increase the lines of code. 
-// - This function also makes it simpler to alter the code if there are changes that need to made or if there is a bug. 
+// - The gameInstructions function decreases the complexity of the program.
+// - Since each category will require the same instructions, rewriting the code each time would increase the lines of code.
+// - This function also makes it simpler to alter the code if there are changes that need to made or if there is a bug.
 function gameInstructions () {
     game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
     game.showLongText("Each correct answer earns you points.", DialogLayout.Full)
