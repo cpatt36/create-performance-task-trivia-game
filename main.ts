@@ -2,10 +2,9 @@
 // - Since each category will require the same instructions, rewriting the code each time would increase the lines of code.
 // - This function also makes it simpler to alter the code if there are changes that need to made or if there is a bug.
 function gameInstructions () {
-    game.showLongText("Please answer the following questions related to your category.", DialogLayout.Full)
+    game.showLongText("You will be given questions related to the category of your choosing.", DialogLayout.Full)
     game.showLongText("Each correct answer earns you points.", DialogLayout.Full)
-    game.showLongText("The game will end once you answer all 5 questions related to the category.", DialogLayout.Full)
-    game.showLongText("You will then see a score.", DialogLayout.Full)
+    game.showLongText("You will see your score once you've answered all the questions.", DialogLayout.Full)
     game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
 // - this function contains all the lines of code needed to initiate the game
@@ -16,7 +15,26 @@ function gameInstructions () {
 // - the functions within the selection initiates the game the user desired
 // - this function uses the programming construct: sequence to ensure that the code is executed in order
 function onStart () {
+    game.setDialogTextColor(1)
+    game.setDialogFrame(img`
+        d d d d d d d d d d d d d d d 
+        d d d d d d d d d d d d d d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d c c c c c c c c c c c d d 
+        d d d d d d d d d d d d d d d 
+        d d d d d d d d d d d d d d d 
+        `)
     game.showLongText("Welcome to the \"Trivia Game\" hosted by Sara and Caroline!", DialogLayout.Full)
+    gameInstructions()
     game.showLongText("Select Category: 0 for History; 1 for Geography; 2 for Movies", DialogLayout.Full)
     category = game.askForNumber("", 1)
     if (category == 0) {
@@ -33,22 +51,23 @@ function onStart () {
 function triviaCategory (num: number) {
     if (num == 0) {
         historyQuestions = [
-        "The First World War began on September 1st, 1914.",
+        "The First World War began in 1914.",
         "Submarines were used in the American Civil War.",
-        "California and Texas were once apart of Mexico.",
+        "California and Texas were once a part of Mexico.",
         "The Declaration of Independence was signed in 1876.",
         "The Great Chicago Fire was started when a cow knocked over a lantern"
         ]
         historyAnswers = [
-        "1",
+        "0",
         "0",
         "0",
         "1",
         "1"
         ]
-        for (let index = 0; index < 5; index++) {
-            let list: number[] = []
-            list.push(game.askForNumber("", 1))
+        userAnswersHistory = []
+        for (let index = 0; index <= 4; index++) {
+            game.showLongText(historyQuestions[index], DialogLayout.Center)
+            userAnswersHistory.push(game.askForNumber("", 1))
         }
     } else if (num == 1) {
         geographyQuestions = [
@@ -65,6 +84,11 @@ function triviaCategory (num: number) {
         "1",
         "0"
         ]
+        userAnswersGeography = []
+        for (let index = 0; index <= 4; index++) {
+            game.showLongText(geographyQuestions[index], DialogLayout.Center)
+            userAnswersGeography.push(game.askForNumber("", 1))
+        }
     } else {
         sportsQuestions = [
         "The NBA stands for the National Basketball Allegiance.",
@@ -80,12 +104,20 @@ function triviaCategory (num: number) {
         "0",
         "0"
         ]
+        userAnswersSports = []
+        for (let index = 0; index <= 4; index++) {
+            game.showLongText(sportsQuestions[index], DialogLayout.Center)
+            userAnswersSports.push(game.askForNumber("", 1))
+        }
     }
 }
+let userAnswersSports: number[] = []
 let sportsAnswers: string[] = []
 let sportsQuestions: string[] = []
+let userAnswersGeography: number[] = []
 let geographyAnswers: string[] = []
 let geographyQuestions: string[] = []
+let userAnswersHistory: number[] = []
 let historyAnswers: string[] = []
 let historyQuestions: string[] = []
 let category = 0
