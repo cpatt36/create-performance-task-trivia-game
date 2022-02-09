@@ -20,17 +20,17 @@ function onStart () {
     game.showLongText("Select Category: 0 for History; 1 for Geography; 2 for Movies", DialogLayout.Full)
     category = game.askForNumber("", 1)
     if (category == 0) {
-        triviaCategory(0)
+        playSelectedTriviaCategory(0)
     } else if (category == 1) {
-        triviaCategory(1)
+        playSelectedTriviaCategory(1)
     } else if (category == 2) {
-        triviaCategory(2)
+        playSelectedTriviaCategory(2)
     } else {
         game.splash("Choose a category that exists.")
         game.reset()
     }
 }
-function triviaCategory (num: number) {
+function playSelectedTriviaCategory (num: number) {
     if (num == 0) {
         historyQuestions = [
         "The First World War began on September 1st, 1914.",
