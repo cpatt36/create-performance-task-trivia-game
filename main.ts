@@ -52,38 +52,38 @@ function triviaCategory (num: number) {
         }
     } else if (num == 1) {
         geographyQuestions = [
-        "a",
-        "b",
-        "c",
-        "",
-        ""
+        "The US is the country with the largest population in the world.",
+        "The capital of Mexico is Mexico City.",
+        "Mars is the planet closest to the Sun.",
+        "Egypt is the driest continent on earth.",
+        "Alaska is the most northern state in the US."
         ]
         geographyAnswers = [
-        "a",
-        "b",
-        "c",
-        "",
-        ""
+        "1",
+        "0",
+        "1",
+        "1",
+        "0"
         ]
     } else {
-        moviesQuestions = [
-        "a",
-        "b",
-        "c",
-        "",
-        ""
+        sportsQuestions = [
+        "The NBA stands for the National Basketball Allegiance.",
+        "In football, each touchdown is 7 points.",
+        "The term \"stale fish\" is used in snowboarding.",
+        "A NFL football weighs 1 pound.",
+        "A soccer field is called \"a pitch\"."
         ]
-        moviesAnswers = [
-        "a",
-        "b",
-        "c",
-        "",
-        ""
+        sportsAnswers = [
+        "1",
+        "1",
+        "0",
+        "0",
+        "0"
         ]
     }
 }
-let moviesAnswers: string[] = []
-let moviesQuestions: string[] = []
+let sportsAnswers: string[] = []
+let sportsQuestions: string[] = []
 let geographyAnswers: string[] = []
 let geographyQuestions: string[] = []
 let historyAnswers: string[] = []
