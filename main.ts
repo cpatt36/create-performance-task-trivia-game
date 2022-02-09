@@ -7,6 +7,12 @@ function gameInstructions () {
     game.showLongText("You will see your score once you've answered all the questions.", DialogLayout.Full)
     game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
+function endGame () {
+    game.showLongText("Congratulations! You finished with a score of....", DialogLayout.Full)
+    game.splash(score, "%")
+    game.showLongText("Press A to reset game.", DialogLayout.Center)
+    game.reset()
+}
 // - this function contains all the lines of code needed to initiate the game
 // - this shortens the code under the onStart block
 // - the long text blocks introduced the game, the game then asks for an input from the user
@@ -35,7 +41,7 @@ function onStart () {
         `)
     game.showLongText("Welcome to the \"Trivia Game\" hosted by Sara and Caroline!", DialogLayout.Full)
     gameInstructions()
-    game.showLongText("Select Category: 0 for History; 1 for Geography; 2 for Movies", DialogLayout.Full)
+    game.showLongText("Select Category: 0 for History; 1 for Geography; 2 for Sports", DialogLayout.Full)
     category = game.askForNumber("", 1)
     if (category == 0) {
         triviaCategory(0)
@@ -58,17 +64,23 @@ function triviaCategory (num: number) {
         "The Great Chicago Fire was started when a cow knocked over a lantern"
         ]
         historyAnswers = [
-        "0",
-        "0",
-        "0",
-        "1",
-        "1"
+        0,
+        0,
+        0,
+        1,
+        1
         ]
         userAnswersHistory = []
         for (let index = 0; index <= 4; index++) {
             game.showLongText(historyQuestions[index], DialogLayout.Center)
             userAnswersHistory.push(game.askForNumber("", 1))
         }
+        for (let index = 0; index <= 4; index++) {
+            if (historyAnswers[index] == userAnswersHistory[index]) {
+                score += 20
+            }
+        }
+        endGame()
     } else if (num == 1) {
         geographyQuestions = [
         "The US is the country with the largest population in the world.",
@@ -78,17 +90,23 @@ function triviaCategory (num: number) {
         "Alaska is the most northern state in the US."
         ]
         geographyAnswers = [
-        "1",
-        "0",
-        "1",
-        "1",
-        "0"
+        1,
+        0,
+        1,
+        1,
+        0
         ]
         userAnswersGeography = []
         for (let index = 0; index <= 4; index++) {
             game.showLongText(geographyQuestions[index], DialogLayout.Center)
             userAnswersGeography.push(game.askForNumber("", 1))
         }
+        for (let index = 0; index <= 4; index++) {
+            if (geographyAnswers[index] == userAnswersGeography[index]) {
+                score += 20
+            }
+        }
+        endGame()
     } else {
         sportsQuestions = [
         "The NBA stands for the National Basketball Allegiance.",
@@ -98,29 +116,36 @@ function triviaCategory (num: number) {
         "A soccer field is called \"a pitch\"."
         ]
         sportsAnswers = [
-        "1",
-        "1",
-        "0",
-        "0",
-        "0"
+        1,
+        1,
+        0,
+        0,
+        0
         ]
         userAnswersSports = []
         for (let index = 0; index <= 4; index++) {
             game.showLongText(sportsQuestions[index], DialogLayout.Center)
             userAnswersSports.push(game.askForNumber("", 1))
         }
+        for (let index = 0; index <= 4; index++) {
+            if (sportsAnswers[index] == userAnswersSports[index]) {
+                score += 20
+            }
+        }
+        endGame()
     }
 }
 let userAnswersSports: number[] = []
-let sportsAnswers: string[] = []
+let sportsAnswers: number[] = []
 let sportsQuestions: string[] = []
 let userAnswersGeography: number[] = []
-let geographyAnswers: string[] = []
+let geographyAnswers: number[] = []
 let geographyQuestions: string[] = []
 let userAnswersHistory: number[] = []
-let historyAnswers: string[] = []
+let historyAnswers: number[] = []
 let historyQuestions: string[] = []
 let category = 0
+let score = 0
 onStart()
 // - this iteration happens throughout the game
 // - it constantly checks if the score of the user is 3
