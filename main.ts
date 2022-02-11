@@ -147,12 +147,3 @@ let historyQuestions: string[] = []
 let category = 0
 let score = 0
 onStart()
-// - this iteration happens throughout the game
-// - it constantly checks if the score of the user is 3
-// - once the user's score equals 3, the user wins and the game ends
-// - this iteration lessens the complexity by not having the program manually check the score after each progression of the game
-forever(function () {
-    if (info.score() >= 3) {
-        game.over(true, effects.confetti)
-    }
-})
