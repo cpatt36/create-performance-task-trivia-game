@@ -7,7 +7,8 @@ function gameInstructions () {
     game.showLongText("You will see your score once you've answered all the questions.", DialogLayout.Full)
     game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
-// Th purpose of this code is to simplify the process of ending the game. The function is called in each of the three categories in the trviaCategory function once the user has answered all 5 questions. 
+// The purpose of this code is to simplify the process of ending the game. The function is called in each of the three categories in the trviaCategory function once the user has answered all five questions in order to decrease the amount of code in the triviaCategory function. 
+// The user is notified that the game has ended and of their score. They are also able to reset the game and play again!
 function endGame () {
     game.showLongText("Congratulations! You finished with a score of....", DialogLayout.Full)
     game.splash(score, "%")
@@ -55,6 +56,7 @@ function onStart () {
         game.reset()
     }
 }
+// The intention behind the triviaCategory function is to streamline the process between the user choosing their category and being asked questions related to the category. Each category is represented by a number, which the user selects. This sets the questions as well as the answers, which is stored in (categoryname)Questions and (categoryname)Answers
 function triviaCategory (num: number) {
     if (num == 0) {
         historyQuestions = [
