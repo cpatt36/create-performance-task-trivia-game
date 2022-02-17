@@ -7,21 +7,24 @@ function gameInstructions () {
     game.showLongText("You will see your score once you've answered all the questions.", DialogLayout.Full)
     game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
-// The purpose of this code is to simplify the process of ending the game. The function is called in each of the three categories in the trviaCategory function once the user has answered all five questions in order to decrease the amount of code in the triviaCategory function. 
-// The user is notified that the game has ended and of their score. They are also able to reset the game and play again!
+// - The purpose of this code is to simplify the process of ending the game. 
+// - The function is called in each of the three categories in the trviaCategory function once the user has answered all five questions in order to decrease the amount of code in the triviaCategory function. 
+// - The user is notified that the game has ended and of their score. 
+// - The score variable is set in the triviaCategory function. 
+// - They are also able to reset the game and play again!
 function endGame () {
     game.showLongText("Congratulations! You finished with a score of....", DialogLayout.Full)
     game.splash(score, "%")
     game.showLongText("Press A to reset game.", DialogLayout.Center)
     game.reset()
 }
-// - this function contains all the lines of code needed to initiate the game
-// - this shortens the code under the onStart block
-// - the long text blocks introduced the game, the game then asks for an input from the user
-// - this function creates the variable "category" as the number the user input
-// - then, selection is used to assign the user the desired category
-// - the functions within the selection initiates the game the user desired
-// - this function uses the programming construct: sequence to ensure that the code is executed in order
+// - This function contains all the lines of code needed to initiate the game.
+// - This shortens the code under the onStart block.
+// - The long text blocks introduced the game, the game then asks for an input from the user.
+// - This function creates the variable "category" as the number the user input.
+// - Then, selection is used to assign the user the desired category.
+// - The functions within the selection initiates the game the user desired.
+// - This function uses the programming construct: sequence to ensure that the code is executed in order.
 function onStart () {
     game.setDialogTextColor(1)
     game.setDialogFrame(img`
@@ -56,7 +59,19 @@ function onStart () {
         game.reset()
     }
 }
-// The intention behind the triviaCategory function is to streamline the process between the user choosing their category and being asked questions related to the category. Each category is represented by a number, which the user selects. This sets the questions as well as the answers, which is stored in (categoryname)Questions and (categoryname)Answers, respectively, where the variable name is different for each category. The answers the user provides are stored in userAnswers, which is a  single variable, not respective of the category. This is possible because the game is reset once the user answers all questions for a category, which makes separating this variable based on category unnecessary,.
+// - The intention behind the triviaCategory function is to streamline the process between the user choosing their category and being asked questions related to the category. 
+// - Each category is represented by a number, which the user selects. 
+// - This sets the questions as well as the answers, which is stored in (categoryname)Questions and (categoryname)Answers, respectively, where the variable name is different for each category. 
+// - The answers the user provides are stored in userAnswers (which initially is an empty array), which is a  single variable, not respective of the category. 
+// - This is possible because the game is reset once the user answers all questions for a category, which makes separating this variable based on category unnecessary and also why the userAnswers function is found before the If Statement. 
+// - The code behind each category contains two For-Index loops.
+// - The first For-Index loop calls the questions related to each category in order and adds the user's answer to the userAnswers function. 
+// - This is repeated 4 times, so that each question is asked then the answer is stored, all in a logical sequence. 
+// - After this loop is completed another For-Index loop happens. 
+// - This next For-Index loop compares the user's answers with the actual answers to the trivia questions.
+// - This happens by getting the string from the (categoryname)Answers variable at each consecutive index and comparing it to the userAnswers with a Boolean in an If-Statement. For each correct answer, the user earns 20 points.
+// - Each question is worth 20 points because there are 5 questions and we, the creators, want the score to be in terms of a percentage without having to convert the score to a percentage with additional code. 
+// - The code for each category also calls the endGame function once all of the previous code is run. This ends the game and provides the user with a score. 
 function triviaCategory (num: number) {
     userAnswers = []
     if (num == 0) {
