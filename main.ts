@@ -7,6 +7,7 @@ function gameInstructions () {
     game.showLongText("You will see your score once you've answered all the questions.", DialogLayout.Full)
     game.showLongText("To answer select 0 for TRUE and 1 for FALSE.", DialogLayout.Full)
 }
+// Th purpose of this code is to simplify the process of ending the game. The function is called in each of the three categories in the trviaCategory function once the user has answered all 5 questions. 
 function endGame () {
     game.showLongText("Congratulations! You finished with a score of....", DialogLayout.Full)
     game.splash(score, "%")
@@ -39,7 +40,7 @@ function onStart () {
         d d d d d d d d d d d d d d d 
         d d d d d d d d d d d d d d d 
         `)
-    game.showLongText("Welcome to the \"Trivia Game\" hosted by Sara and Caroline!", DialogLayout.Full)
+    game.showLongText("Welcome to the \"Trivia Game!\"", DialogLayout.Full)
     gameInstructions()
     game.showLongText("Select Category: 0 for History; 1 for Geography; 2 for Sports", DialogLayout.Full)
     category = game.askForNumber("", 1)
@@ -75,8 +76,8 @@ function triviaCategory (num: number) {
             game.showLongText(historyQuestions[index], DialogLayout.Center)
             userAnswersHistory.push(game.askForNumber("", 1))
         }
-        for (let index = 0; index <= 4; index++) {
-            if (historyAnswers[index] == userAnswersHistory[index]) {
+        for (let index2 = 0; index2 <= 4; index2++) {
+            if (historyAnswers[index2] == userAnswersHistory[index2]) {
                 score += 20
             }
         }
@@ -97,12 +98,12 @@ function triviaCategory (num: number) {
         0
         ]
         userAnswersGeography = []
-        for (let index = 0; index <= 4; index++) {
-            game.showLongText(geographyQuestions[index], DialogLayout.Center)
+        for (let index3 = 0; index3 <= 4; index3++) {
+            game.showLongText(geographyQuestions[index3], DialogLayout.Center)
             userAnswersGeography.push(game.askForNumber("", 1))
         }
-        for (let index = 0; index <= 4; index++) {
-            if (geographyAnswers[index] == userAnswersGeography[index]) {
+        for (let index4 = 0; index4 <= 4; index4++) {
+            if (geographyAnswers[index4] == userAnswersGeography[index4]) {
                 score += 20
             }
         }
@@ -123,12 +124,12 @@ function triviaCategory (num: number) {
         0
         ]
         userAnswersSports = []
-        for (let index = 0; index <= 4; index++) {
-            game.showLongText(sportsQuestions[index], DialogLayout.Center)
+        for (let index5 = 0; index5 <= 4; index5++) {
+            game.showLongText(sportsQuestions[index5], DialogLayout.Center)
             userAnswersSports.push(game.askForNumber("", 1))
         }
-        for (let index = 0; index <= 4; index++) {
-            if (sportsAnswers[index] == userAnswersSports[index]) {
+        for (let index6 = 0; index6 <= 4; index6++) {
+            if (sportsAnswers[index6] == userAnswersSports[index6]) {
                 score += 20
             }
         }
