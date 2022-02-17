@@ -56,8 +56,9 @@ function onStart () {
         game.reset()
     }
 }
-// The intention behind the triviaCategory function is to streamline the process between the user choosing their category and being asked questions related to the category. Each category is represented by a number, which the user selects. This sets the questions as well as the answers, which is stored in (categoryname)Questions and (categoryname)Answers
+// The intention behind the triviaCategory function is to streamline the process between the user choosing their category and being asked questions related to the category. Each category is represented by a number, which the user selects. This sets the questions as well as the answers, which is stored in (categoryname)Questions and (categoryname)Answers, respectively, where the variable name is different for each category. The answers the user provides are stored in userAnswers, which is a  single variable, not respective of the category. This is possible because the game is reset once the user answers all questions for a category, which makes separating this variable based on category unnecessary,.
 function triviaCategory (num: number) {
+    userAnswers = []
     if (num == 0) {
         historyQuestions = [
         "The First World War began in 1914.",
@@ -73,13 +74,12 @@ function triviaCategory (num: number) {
         1,
         1
         ]
-        userAnswersHistory = []
         for (let index = 0; index <= 4; index++) {
             game.showLongText(historyQuestions[index], DialogLayout.Center)
-            userAnswersHistory.push(game.askForNumber("", 1))
+            userAnswers.push(game.askForNumber("", 1))
         }
-        for (let index2 = 0; index2 <= 4; index2++) {
-            if (historyAnswers[index2] == userAnswersHistory[index2]) {
+        for (let index = 0; index <= 4; index++) {
+            if (historyAnswers[index] == userAnswers[index]) {
                 score += 20
             }
         }
@@ -99,13 +99,12 @@ function triviaCategory (num: number) {
         1,
         0
         ]
-        userAnswersGeography = []
-        for (let index3 = 0; index3 <= 4; index3++) {
-            game.showLongText(geographyQuestions[index3], DialogLayout.Center)
-            userAnswersGeography.push(game.askForNumber("", 1))
+        for (let index = 0; index <= 4; index++) {
+            game.showLongText(geographyQuestions[index], DialogLayout.Center)
+            userAnswers.push(game.askForNumber("", 1))
         }
-        for (let index4 = 0; index4 <= 4; index4++) {
-            if (geographyAnswers[index4] == userAnswersGeography[index4]) {
+        for (let index = 0; index <= 4; index++) {
+            if (geographyAnswers[index] == userAnswers[index]) {
                 score += 20
             }
         }
@@ -125,28 +124,25 @@ function triviaCategory (num: number) {
         0,
         0
         ]
-        userAnswersSports = []
-        for (let index5 = 0; index5 <= 4; index5++) {
-            game.showLongText(sportsQuestions[index5], DialogLayout.Center)
-            userAnswersSports.push(game.askForNumber("", 1))
+        for (let index = 0; index <= 4; index++) {
+            game.showLongText(sportsQuestions[index], DialogLayout.Center)
+            userAnswers.push(game.askForNumber("", 1))
         }
-        for (let index6 = 0; index6 <= 4; index6++) {
-            if (sportsAnswers[index6] == userAnswersSports[index6]) {
+        for (let index = 0; index <= 4; index++) {
+            if (sportsAnswers[index] == userAnswers[index]) {
                 score += 20
             }
         }
         endGame()
     }
 }
-let userAnswersSports: number[] = []
 let sportsAnswers: number[] = []
 let sportsQuestions: string[] = []
-let userAnswersGeography: number[] = []
 let geographyAnswers: number[] = []
 let geographyQuestions: string[] = []
-let userAnswersHistory: number[] = []
 let historyAnswers: number[] = []
 let historyQuestions: string[] = []
+let userAnswers: number[] = []
 let category = 0
 let score = 0
 onStart()
